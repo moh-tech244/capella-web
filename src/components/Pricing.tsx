@@ -17,26 +17,23 @@ export default function Pricing() {
       period: "/month",
       desc: "Perfect for getting started",
       features: ["1 Month Access", "4K Quality", "Standard Support", "5,000 Channels"],
-      buttonColor: "#1e293b",
       popular: false
     },
     {
       name: "Standard Pack",
       price: "60",
       period: "/6 months",
-      desc: "Balanced choice for users",
+      desc: "Most popular choice",
       features: ["6 Months Access", "Priority Bandwidth", "24/7 Support", "10,000 Channels"],
-      buttonColor: "#1e293b", // Changé en gris sombre
       popular: false
     },
     {
       name: "Elite Protocol",
       price: "89",
       period: "/year",
-      desc: "Maximum performance & value",
+      desc: "Maximum performance",
       features: ["12 Months + 1 Free", "Maximum Stability", "Instant Activation", "15,000 Channels"],
-      buttonColor: "#2563eb", // Maintenant en bleu
-      popular: true // Devient le "Most Popular"
+      popular: true // Badge déplacé ici
     }
   ];
 
@@ -72,7 +69,6 @@ export default function Pricing() {
             backgroundColor: '#0a0a0a',
             borderRadius: '24px',
             padding: '40px 30px',
-            // Bordure bleue uniquement pour Elite Protocol
             border: plan.popular ? '2px solid #2563eb' : '1px solid #1a1a1a',
             position: 'relative',
             display: 'flex',
@@ -116,23 +112,11 @@ export default function Pricing() {
             </div>
 
             <button style={{
-              backgroundColor: plan.buttonColor,
-              color: 'white',
-              padding: '16px',
-              borderRadius: '12px',
-              border: 'none',
-              fontWeight: '700',
-              fontSize: '15px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              transition: 'filter 0.2s'
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.filter = 'brightness(1.2)'}
-            onMouseLeave={(e) => e.currentTarget.style.filter = 'brightness(1)'}
-            >
+              backgroundColor: plan.popular ? '#2563eb' : '#1e293b',
+              color: 'white', padding: '16px', borderRadius: '12px', border: 'none',
+              fontWeight: '700', fontSize: '15px', cursor: 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'
+            }}>
               Get Started
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
