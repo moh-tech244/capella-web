@@ -1,49 +1,79 @@
 import React from 'react';
 
-export const Pricing = () => { // <--- Il faut bien le "export" ici
+const Pricing = () => {
   const plans = [
-    { name: "Starter", price: "199€", features: ["Optimisation Google Maps", "Audit SEO Local", "Rapport Mensuel"] },
-    { name: "Business", price: "399€", features: ["Tout du pack Starter", "Gestion des Avis", "5 Mots-clés ciblés"], popular: true },
-    { name: "Premium", price: "699€", features: ["Tout du pack Business", "Campagne Ads Local", "Support 24/7"] }
+    {
+      name: "Starter Protocol",
+      price: "15",
+      period: "/month",
+      features: ["1 Month Unlimited Access", "Native 4K Video Stream", "Standard Support Node", "Single Core Capacity", "Global Edge Network"],
+      highlighted: false
+    },
+    {
+      name: "Standard Pack",
+      price: "60",
+      period: "/6 months",
+      features: ["6 Months Protocol Access", "Native 8K High-Fidelity", "24/7 VIP Concierge", "Multi-Core Priority", "Maximum Stability Core"],
+      highlighted: false
+    },
+    {
+      name: "Elite Laboratory",
+      price: "89",
+      period: "/year",
+      badge: "MOST POPULAR",
+      features: ["12 Months + 1 Bonus", "Elite Enterprise Core", "Instant Automated Deploy", "Direct R&D Channel", "Early Beta Access"],
+      highlighted: true
+    }
   ];
 
   return (
-    <section style={{ padding: '80px 20px', textAlign: 'center' }}>
-      <h2 style={{ fontSize: '2.5rem', marginBottom: '40px', fontWeight: 'bold', color: '#fff' }}>Nos Offres</h2>
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-        gap: '30px',
-        maxWidth: '1200px',
-        margin: '0 auto'
-      }}>
-        {plans.map((p, i) => (
-          <div key={i} style={{ 
-            backgroundColor: '#111', 
-            padding: '40px', 
-            borderRadius: '20px', 
-            border: p.popular ? '2px solid #3b82f6' : '1px solid #222',
-            position: 'relative'
-          }}>
-            {p.popular && <span style={{ backgroundColor: '#3b82f6', color: '#fff', fontSize: '0.8rem', padding: '5px 12px', borderRadius: '20px', position: 'absolute', top: '-15px', left: '50%', transform: 'translateX(-50%)', fontWeight: 'bold' }}>POPULAIRE</span>}
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '10px', color: '#fff' }}>{p.name}</h3>
-            <p style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '20px', color: '#fff' }}>{p.price}</p>
-            <ul style={{ listStyle: 'none', padding: 0, textAlign: 'left', marginBottom: '30px', color: '#94a3b8' }}>
-              {p.features.map((f, idx) => <li key={idx} style={{ marginBottom: '10px' }}>✅ {f}</li>)}
-            </ul>
-            <button style={{ 
-              width: '100%', 
-              padding: '12px', 
-              borderRadius: '10px', 
-              border: 'none', 
-              backgroundColor: p.popular ? '#3b82f6' : '#222', 
-              color: '#fff', 
-              fontWeight: 'bold',
-              cursor: 'pointer'
-            }}>Choisir ce pack</button>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch p-6 bg-black">
+      {plans.map((plan, index) => (
+        <div 
+          key={index}
+          className={`relative p-8 rounded-2xl border transition-all duration-300 ${
+            plan.highlighted 
+            ? 'border-blue-500 bg-blue-500/5 shadow-[0_0_40px_-15px_rgba(59,130,246,0.5)] scale-105 z-10' 
+            : 'border-zinc-800 bg-zinc-900/50'
+          } flex flex-col`}
+        >
+          {plan.badge && (
+            <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-[10px] font-bold px-4 py-1 rounded-full whitespace-nowrap">
+              {plan.badge}
+            </span>
+          )}
+          
+          <h3 className="text-xl font-bold text-white mb-6">{plan.name}</h3>
+          
+          <div className="flex items-baseline gap-1 mb-8">
+            <span className="text-5xl font-bold text-white">${plan.price}</span>
+            <span className="text-zinc-500 text-sm font-medium uppercase tracking-tighter">
+              CAD {plan.period}
+            </span>
           </div>
-        ))}
-      </div>
-    </section>
+
+          <ul className="space-y-4 mb-10 flex-grow">
+            {plan.features.map((feature, i) => (
+              <li key={i} className="flex items-center gap-3 text-sm text-zinc-300 font-medium">
+                <svg className="w-4 h-4 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          <button className={`w-full py-4 rounded-xl font-bold text-sm transition-all ${
+            plan.highlighted 
+              ? 'bg-blue-600 hover:bg-blue-500 text-white' 
+              : 'bg-white hover:bg-zinc-200 text-black'
+          }`}>
+            ACTIVATE PROTOCOL →
+          </button>
+        </div>
+      ))}
+    </div>
   );
 };
+
+export default Pricing;
