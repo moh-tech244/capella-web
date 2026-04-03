@@ -1,110 +1,25 @@
-import * as React from "react";
-import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
-import { cva } from "class-variance-authority";
-import { ChevronDownIcon } from "lucide-react";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+import React from 'react';
 
-// Fonction utilitaire intégrée pour éviter l'erreur "./utils"
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
-const Header = ({
-  className,
-  children,
-  viewport = true,
-  ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Root> & {
-  viewport?: boolean;
-}) => {
+export default function Header() {
   return (
-    <NavigationMenuPrimitive.Root
-      data-slot="header-root"
-      data-viewport={viewport}
-      className={cn(
-        "group/header relative flex max-w-max flex-1 items-center justify-center",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-      {viewport && (
-        <div className="absolute top-full left-0 isolate z-50 flex justify-center">
-          <NavigationMenuPrimitive.Viewport
-            className="origin-top-center bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow md:w-[var(--radix-navigation-menu-viewport-width)]"
-          />
+    <nav className="navbar">
+      <div className="logo-group">
+        <div className="logo-shield">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/></svg>
         </div>
-      )}
-    </NavigationMenuPrimitive.Root>
+        <span className="logo-text">Capella R&D Lab</span>
+      </div>
+      
+      <div className="nav-links">
+        <span>Features</span>
+        <span>Pricing</span>
+        <span>Contact</span>
+      </div>
+      
+      <button className="btn-support">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        Contact Support
+      </button>
+    </nav>
   );
-};
-
-// Sous-composants nécessaires
-const HeaderList = React.forwardRef<
-  React.ElementRef<typeof NavigationMenuPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List>
->(({ className, ...props }, ref) => (
-  <NavigationMenuPrimitive.List
-    ref={ref}
-    className={cn(
-      "group flex flex-1 list-none items-center justify-center gap-1",
-      className
-    )}
-    {...props}
-  />
-));
-HeaderList.displayName = "HeaderList";
-
-const HeaderItem = NavigationMenuPrimitive.Item;
-
-const headerTriggerStyle = cva(
-  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-accent/50 outline-none transition-colors"
-);
-
-const HeaderTrigger = React.forwardRef<
-  React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <NavigationMenuPrimitive.Trigger
-    ref={ref}
-    className={cn(headerTriggerStyle(), "group", className)}
-    {...props}
-  >
-    {children}{" "}
-    <ChevronDownIcon
-      className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
-      aria-hidden="true"
-    />
-  </NavigationMenuPrimitive.Trigger>
-));
-HeaderTrigger.displayName = "HeaderTrigger";
-
-const HeaderContent = React.forwardRef<
-  React.ElementRef<typeof NavigationMenuPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Content>
->(({ className, ...props }, ref) => (
-  <NavigationMenuPrimitive.Content
-    ref={ref}
-    className={cn(
-      "left-0 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out md:absolute md:w-auto",
-      className
-    )}
-    {...props}
-  />
-));
-HeaderContent.displayName = "HeaderContent";
-
-const HeaderLink = NavigationMenuPrimitive.Link;
-
-export {
-  Header,
-  HeaderList,
-  HeaderItem,
-  HeaderContent,
-  HeaderTrigger,
-  HeaderLink,
-  headerTriggerStyle,
-};
-
-export default Header;
+}
