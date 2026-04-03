@@ -1,7 +1,7 @@
 import React from 'react';
 
-// CORRECTION DU CHEMIN ICI :
-import "../../default_shadcn_theme.css"; 
+// Essaye ce chemin, s'il fait encore une erreur Vercel, retire la ligne.
+import "../../../default_shadcn_theme.css"; 
 
 import Header from '../components/Header';
 import { Hero } from '../components/Hero';
@@ -13,9 +13,9 @@ import { FloatingSupport } from '../components/FloatingSupport';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-black text-white antialiased">
+    <div style={{ backgroundColor: '#000', color: '#fff', minHeight: '100vh', fontFamily: 'sans-serif' }}>
       <Header />
-      <main className="flex flex-col">
+      <main style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
         <Hero />
         <QuickIntro />
         <Features />
