@@ -1,6 +1,20 @@
 import React from 'react';
 
 export default function Header() {
+  // Style commun pour les boutons de navigation
+  const navButtonStyle = {
+    backgroundColor: 'transparent',
+    border: 'none',
+    color: '#a1a1aa', // Couleur grise d'origine
+    fontSize: '14px',
+    fontWeight: '600',
+    padding: '8px 16px',
+    borderRadius: '12px',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease',
+    fontFamily: 'Inter, sans-serif' // Police propre
+  };
+
   return (
     <nav style={{ 
       display: 'flex', 
@@ -20,8 +34,7 @@ export default function Header() {
           backgroundColor: '#2563eb', 
           padding: '10px', 
           borderRadius: '14px', 
-          display: 'flex',
-          boxShadow: '0 0 15px rgba(37, 99, 235, 0.3)' 
+          display: 'flex'
         }}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
             <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/>
@@ -32,19 +45,23 @@ export default function Header() {
         </span>
       </div>
 
-      {/* Navigation Links */}
-      <div style={{ display: 'flex', gap: '35px' }}>
+      {/* Navigation Buttons */}
+      <div style={{ display: 'flex', gap: '10px' }}>
         {['Features', 'Pricing', 'Contact'].map((item) => (
-          <span key={item} style={{ 
-            color: '#71717a', 
-            fontSize: '13px', 
-            fontWeight: '600', 
-            cursor: 'pointer',
-            transition: '0.2s'
-          }} onMouseEnter={(e) => e.currentTarget.style.color = 'white'} 
-             onMouseLeave={(e) => e.currentTarget.style.color = '#71717a'}>
+          <button 
+            key={item} 
+            style={navButtonStyle}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#111';
+              e.currentTarget.style.color = 'white';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.color = '#a1a1aa';
+            }}
+          >
             {item}
-          </span>
+          </button>
         ))}
       </div>
 
@@ -60,8 +77,7 @@ export default function Header() {
         display: 'flex', 
         alignItems: 'center', 
         gap: '8px',
-        cursor: 'pointer',
-        transition: 'transform 0.2s'
+        cursor: 'pointer'
       }}>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
