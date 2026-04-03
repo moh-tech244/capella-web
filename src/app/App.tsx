@@ -1,6 +1,5 @@
 import React from 'react';
 
-// 1. Les données des plans
 const PRICING_PLANS = [
   {
     title: "Basic Access",
@@ -24,16 +23,13 @@ const PRICING_PLANS = [
     period: "/year",
     description: "Most popular choice",
     features: ["12 Months + 1 Free", "Maximum Stability", "Instant Activation", "15,000 Channels"],
-    isPopular: true // Le pack 89 est le plus populaire
+    isPopular: true
   }
 ];
 
-// 2. L'export par défaut (Indispensable pour Vercel/Vite)
 export default function App() {
   return (
     <div className="min-h-screen bg-black text-white p-10 font-sans selection:bg-blue-500/30">
-      
-      {/* Header */}
       <div className="text-center mb-20 pt-10">
         <h2 className="text-6xl font-black mb-4 uppercase tracking-tighter italic">
           Choose Your <span className="text-blue-600">Protocol</span>
@@ -43,7 +39,6 @@ export default function App() {
         </p>
       </div>
 
-      {/* Grid */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
         {PRICING_PLANS.map((plan, index) => (
           <div 
@@ -98,7 +93,6 @@ export default function App() {
           </div>
         ))}
       </div>
-
     </div>
   );
 }
