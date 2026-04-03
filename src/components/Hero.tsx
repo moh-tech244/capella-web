@@ -1,30 +1,77 @@
-export const Hero = () => {
+import React from 'react';
+
+export default function Hero() {
   return (
-    <section style={{ 
-      padding: '80px 20px', 
+    <section id="features" style={{ 
+      padding: '120px 20px', 
       textAlign: 'center', 
-      background: 'linear-gradient(to bottom, #000, #111)',
-      borderBottom: '1px solid #222' 
+      backgroundColor: '#000', 
+      color: 'white',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center'
     }}>
-      <h1 style={{ fontSize: '3.5rem', fontWeight: '800', marginBottom: '20px' }}>
-        Bienvenue chez <span style={{ color: '#3b82f6' }}>Capella</span>
-      </h1>
-      <p style={{ color: '#94a3b8', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 30px' }}>
-        Votre expert en optimisation digitale. Nous propulsons les entreprises locales au sommet de Google Maps.
-      </p>
-      <button style={{ 
-        backgroundColor: '#3b82f6', 
-        color: '#white', 
-        padding: '15px 30px', 
-        borderRadius: '8px', 
-        border: 'none', 
-        fontWeight: 'bold',
-        cursor: 'pointer',
-        fontSize: '1rem'
+      {/* Badge optionnel pour le look "Enterprise" */}
+      <div style={{
+        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+        border: '1px solid rgba(37, 99, 235, 0.2)',
+        color: '#2563eb',
+        padding: '6px 16px',
+        borderRadius: '99px',
+        fontSize: '12px',
+        fontWeight: '700',
+        marginBottom: '24px',
+        textTransform: 'uppercase',
+        letterSpacing: '1px'
       }}>
-        Démarrer maintenant
+        Next-Gen Optimization
+      </div>
+
+      {/* Titre Principal */}
+      <h1 style={{ 
+        fontSize: '64px', 
+        fontWeight: '900', 
+        marginBottom: '20px', 
+        letterSpacing: '-2px',
+        lineHeight: '1.1'
+      }}>
+        Welcome to <span style={{ color: '#2563eb' }}>Capella</span>
+      </h1>
+
+      {/* Texte descriptif optimisé en Anglais */}
+      <p style={{ 
+        fontSize: '18px', 
+        color: '#a1a1aa', 
+        maxWidth: '600px', 
+        lineHeight: '1.6',
+        marginBottom: '40px'
+      }}>
+        Your dedicated digital growth partner. We specialize in enhancing 
+        online visibility, driving organic traffic, and optimizing 
+        business presence across premium platforms.
+      </p>
+
+      {/* Bouton d'action */}
+      <button 
+        onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+        style={{ 
+          backgroundColor: '#2563eb', 
+          color: 'white', 
+          padding: '16px 36px', 
+          borderRadius: '12px', 
+          border: 'none', 
+          fontSize: '16px', 
+          fontWeight: '800', 
+          cursor: 'pointer',
+          transition: 'transform 0.2s ease',
+          boxShadow: '0 10px 25px rgba(37, 99, 235, 0.4)'
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+      >
+        Get Started Now
       </button>
     </section>
   );
-};
-export default Hero;
+}
