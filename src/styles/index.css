@@ -7,11 +7,15 @@
   --border: #222;
 }
 
-/* Base & Background */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: var(--bg);
   color: white;
-  margin: 0;
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
   background-image: 
@@ -21,7 +25,6 @@ body {
   background-size: 100% 100%, 40px 40px, 40px 40px;
 }
 
-/* Navigation */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -29,16 +32,22 @@ body {
   padding: 20px 60px;
 }
 
-.logo { font-weight: 800; font-size: 20px; }
-.nav-links { display: flex; gap: 30px; align-items: center; color: #a1a1aa; font-size: 14px; }
-.btn-contact { background: var(--blue); color: white; border: none; padding: 10px 20px; border-radius: 12px; font-weight: 600; cursor: pointer; }
+.hero {
+  text-align: center;
+  margin-top: 80px;
+}
 
-/* Hero Section */
-.hero { text-align: center; margin-top: 80px; }
-.hero-title { font-size: 64px; font-weight: 900; letter-spacing: -2px; line-height: 1; margin: 0; }
-.hero-title span { color: var(--blue); }
+.hero-title {
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1;
+}
 
-/* Pricing Grid */
+.hero-title span {
+  color: var(--blue);
+}
+
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -55,15 +64,18 @@ body {
   border-radius: 32px;
   text-align: center;
   position: relative;
-  transition: transform 0.3s ease;
 }
 
-.card.popular { border: 2px solid var(--blue); box-shadow: 0 0 30px rgba(37, 99, 235, 0.2); }
+.card.popular {
+  border: 2px solid var(--blue);
+}
 
-.price { font-size: 56px; font-weight: 900; margin: 20px 0; }
-.price span { font-size: 18px; color: #555; }
+.price {
+  font-size: 56px;
+  font-weight: 900;
+  margin: 20px 0;
+}
 
-/* Buttons & Badges */
 .btn-card {
   width: 100%;
   padding: 18px;
@@ -73,10 +85,12 @@ body {
   cursor: pointer;
   background: white;
   color: black;
-  text-transform: uppercase;
 }
 
-.btn-card.blue { background: var(--blue); color: white; }
+.btn-card.blue {
+  background: var(--blue);
+  color: white;
+}
 
 .badge {
   position: absolute;
@@ -88,23 +102,4 @@ body {
   border-radius: 99px;
   font-size: 11px;
   font-weight: 900;
-}
-
-/* Floating Icon */
-.support-icon {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: var(--blue);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
-}
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
