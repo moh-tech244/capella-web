@@ -1,6 +1,6 @@
 import React from 'react';
 
-// 1. Définition des données (Data Layer)
+// 1. Les données des plans
 const PRICING_PLANS = [
   {
     title: "Basic Access",
@@ -24,25 +24,26 @@ const PRICING_PLANS = [
     period: "/year",
     description: "Most popular choice",
     features: ["12 Months + 1 Free", "Maximum Stability", "Instant Activation", "15,000 Channels"],
-    isPopular: true // Le pack à 89 est maintenant le "Most Popular"
+    isPopular: true // Le pack 89 est le plus populaire
   }
 ];
 
+// 2. L'export par défaut (Indispensable pour Vercel/Vite)
 export default function App() {
   return (
     <div className="min-h-screen bg-black text-white p-10 font-sans selection:bg-blue-500/30">
       
-      {/* Header Titre */}
+      {/* Header */}
       <div className="text-center mb-20 pt-10">
         <h2 className="text-6xl font-black mb-4 uppercase tracking-tighter italic">
           Choose Your <span className="text-blue-600">Protocol</span>
         </h2>
-        <p className="text-zinc-500 font-medium uppercase tracking-widest text-xs">
+        <p className="text-zinc-500 font-medium uppercase tracking-widest text-[10px]">
           Optimized tiers for global digital media infrastructure.
         </p>
       </div>
 
-      {/* Grid de prix - Rendu Dynamique */}
+      {/* Grid */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
         {PRICING_PLANS.map((plan, index) => (
           <div 
@@ -53,16 +54,17 @@ export default function App() {
               : 'border-zinc-800 bg-zinc-950 hover:border-zinc-700'
             }`}
           >
-            {/* Badge "Most Popular" uniquement sur le pack 89 */}
             {plan.isPopular && (
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg whitespace-nowrap">
                 Most Popular
               </div>
             )}
 
             <div className="mb-10 text-center">
               <h3 className="text-2xl font-bold mb-2 tracking-tight">{plan.title}</h3>
-              <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest">{plan.description}</p>
+              <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">
+                {plan.description}
+              </p>
             </div>
 
             <div className="mb-10 text-center">
@@ -73,11 +75,10 @@ export default function App() {
               <div className="text-zinc-500 text-sm mt-1 font-bold">{plan.period}</div>
             </div>
 
-            {/* Features List */}
             <ul className="space-y-5 mb-12 flex-grow">
               {plan.features.map((feat, i) => (
                 <li key={i} className="flex items-center gap-4 text-zinc-300 font-semibold text-sm">
-                  <div className="w-5 h-5 rounded-full bg-blue-600/10 flex items-center justify-center border border-blue-600/20">
+                  <div className="w-5 h-5 rounded-full bg-blue-600/10 flex items-center justify-center border border-blue-600/20 flex-shrink-0">
                     <svg className="w-3 h-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="4">
                       <path d="M5 13l4 4L19 7" />
                     </svg>
@@ -87,10 +88,9 @@ export default function App() {
               ))}
             </ul>
 
-            {/* Bouton Uniforme "Get Started" */}
             <button className={`w-full py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-all ${
               plan.isPopular 
-              ? 'bg-blue-600 hover:bg-blue-500 shadow-xl' 
+              ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-xl' 
               : 'bg-white text-black hover:bg-zinc-200 shadow-lg'
             }`}>
               Get Started →
