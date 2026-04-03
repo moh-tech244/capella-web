@@ -1,78 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
-
-:root {
-  --blue: #2563eb;
-  --bg: #000;
-  --card: rgba(15, 15, 15, 0.9);
-  --border: #222;
-}
-
-body {
-  background-color: var(--bg);
-  color: white;
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-image: 
-    radial-gradient(circle at 50% 30%, rgba(37, 99, 235, 0.15) 0%, transparent 55%),
-    linear-gradient(to right, #111 1px, transparent 1px),
-    linear-gradient(to bottom, #111 1px, transparent 1px);
-  background-size: 100% 100%, 40px 40px, 40px 40px;
-}
-
-.hero-title {
-  font-size: 64px;
-  font-weight: 900;
-  text-align: center;
-  margin-top: 60px;
-  letter-spacing: -2px;
-}
-
-.hero-title span { color: var(--blue); }
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1000px;
-  margin: 50px auto;
-  padding: 20px;
-}
-
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 40px;
-  border-radius: 24px;
-  text-align: center;
-  position: relative;
-}
-
-.card.popular { border: 2px solid var(--blue); }
-
-.price { font-size: 48px; font-weight: 800; margin: 10px 0; }
-.price span { font-size: 16px; color: #555; }
-
-.btn {
-  width: 100%;
-  padding: 15px;
-  border-radius: 12px;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-.btn-blue { background: var(--blue); color: white; }
-
-.badge {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--blue);
-  padding: 5px 15px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: bold;
-}
-}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capella R&D Lab | Optimization Protocol</title>
+    
+    <link rel="stylesheet" href="/src/styles/index.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
