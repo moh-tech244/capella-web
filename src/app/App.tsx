@@ -1,8 +1,9 @@
 import React from 'react';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import Features from '../components/Features';
-import Pricing from '../components/Pricing';
+// On utilise "./" car le dossier components est DANS le dossier app [cite : image_2fc467.png]
+import Header from './components/Header';
+import Hero from './components/Hero';
+import Features from './components/Features';
+import Pricing from './components/Pricing';
 
 export default function App() {
   return (
