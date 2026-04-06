@@ -5,96 +5,130 @@ const Footer = () => {
     <footer style={{ 
       backgroundColor: '#000', 
       borderTop: '1px solid #111', 
-      padding: '100px 5vw 50px', // Utilise 5% de la largeur pour couvrir l'espace
+      padding: '100px 5vw 50px',
       marginTop: '100px',
       fontFamily: '"Inter", sans-serif'
     }}>
       <style>{`
         @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
+          from { opacity: 0; transform: translateY(30px); }
           to { opacity: 1; transform: translateY(0); }
         }
         .footer-animate { animation: fadeInUp 0.8s ease-out forwards; }
-        .hover-blue:hover { color: #2563eb !important; transition: 0.3s; }
+        .hover-blue:hover { color: #2563eb !important; transition: 0.3s; cursor: pointer; }
+        
+        /* Grille adaptative : 2 par 2 sur tablette/PC, 1 par 1 sur mobile */
+        .explanation-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 60px;
+          margin-bottom: 100px;
+        }
+        @media (max-width: 768px) {
+          .explanation-grid { grid-template-columns: 1fr; }
+        }
       `}</style>
 
       <div style={{ maxWidth: '1600px', margin: '0 auto' }}>
         
-        {/* GRILLE DE CONFIANCE - COUVRE TOUT L'ESPACE */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-          gap: '50px', 
-          marginBottom: '100px' 
-        }}>
-          {[
-            { title: "ZERO LATENCY PROTOCOL", desc: "Engineered for 4K live sports. Our private network eliminates buffering even during peak global events.", icon: "⚡" },
-            { title: "INSTANT ACTIVATION", desc: "Automated delivery. Credentials sent the millisecond your Stripe payment is confirmed.", icon: "🚀" },
-            { title: "SECURE PAYMENTS", desc: "Transactions secured by Stripe. AES-256 encryption ensures your data stays private.", icon: "💳" },
-            { title: "ELITE BENEFITS", desc: "Exclusive access to PPV events, priority bandwidth, and 24/7 dedicated support.", icon: "💎" }
-          ].map((item, i) => (
-            <div key={i} className="footer-animate" style={{ animationDelay: `${i * 0.2}s` }}>
-              <div style={{ fontSize: '24px', marginBottom: '15px' }}>{item.icon}</div>
-              <h4 style={{ color: '#2563eb', fontSize: '14px', fontWeight: 'bold', letterSpacing: '2px', marginBottom: '15px' }}>{item.title}</h4>
-              <p style={{ color: '#a1a1aa', fontSize: '16px', lineHeight: '1.7' }}>{item.desc}</p>
-            </div>
-          ))}
+        {/* GRILLE D'EXPLICATION 2 PAR 2 */}
+        <div className="explanation-grid">
+          {/* Bloc 1: Performance */}
+          <div className="footer-animate" style={{ animationDelay: '0.1s' }}>
+            <h4 style={{ color: '#2563eb', fontSize: '14px', fontWeight: 'bold', letterSpacing: '2px', marginBottom: '15px' }}>
+              ZERO LATENCY PROTOCOL
+            </h4>
+            <p style={{ color: '#a1a1aa', fontSize: '18px', lineHeight: '1.7' }}>
+              Engineered specifically for **4K live sports**. Our private global network eliminates buffering and lag, ensuring a seamless elite viewing experience even during peak traffic.
+            </p>
+          </div>
+
+          {/* Bloc 2: Livraison */}
+          <div className="footer-animate" style={{ animationDelay: '0.2s' }}>
+            <h4 style={{ color: '#2563eb', fontSize: '14px', fontWeight: 'bold', letterSpacing: '2px', marginBottom: '15px' }}>
+              INSTANT ACTIVATION
+            </h4>
+            <p style={{ color: '#a1a1aa', fontSize: '18px', lineHeight: '1.7' }}>
+              Our proprietary automated system generates your **access credentials** and delivers them to your dashboard the exact millisecond your transaction is verified.
+            </p>
+          </div>
+
+          {/* Bloc 3: Sécurité Stripe */}
+          <div className="footer-animate" style={{ animationDelay: '0.3s' }}>
+            <h4 style={{ color: '#2563eb', fontSize: '14px', fontWeight: 'bold', letterSpacing: '2px', marginBottom: '15px' }}>
+              SECURE STRIPE PAYMENTS
+            </h4>
+            <p style={{ color: '#a1a1aa', fontSize: '18px', lineHeight: '1.7' }}>
+              All transactions are processed through **Stripe** with military-grade AES-256 encryption. Your sensitive financial data never touches our servers, ensuring 100% payment safety.
+            </p>
+          </div>
+
+          {/* Bloc 4: Avantages Abonnés */}
+          <div className="footer-animate" style={{ animationDelay: '0.4s' }}>
+            <h4 style={{ color: '#2563eb', fontSize: '14px', fontWeight: 'bold', letterSpacing: '2px', marginBottom: '15px' }}>
+              EXCLUSIVE MEMBER BENEFITS
+            </h4>
+            <p style={{ color: '#a1a1aa', fontSize: '18px', lineHeight: '1.7' }}>
+              Elite subscribers receive **priority bandwidth** allocation, exclusive access to global PPV events, and 24/7 dedicated technical assistance for all devices.
+            </p>
+          </div>
         </div>
 
-        {/* SECTION PRINCIPALE - TYPOGRAPHIE LARGE */}
+        {/* SECTION MARQUE - TYPOGRAPHIE MASSIVE */}
         <div style={{ 
           display: 'flex', 
           justifyContent: 'space-between', 
           flexWrap: 'wrap', 
           gap: '80px',
-          borderTop: '1px solid #09090b',
+          borderTop: '1px solid #111',
           paddingTop: '80px'
         }}>
           <div style={{ flex: '1 1 500px' }}>
             <h3 style={{ 
-              fontSize: 'clamp(32px, 5vw, 64px)', // Police fluide qui couvre l'espace
+              fontSize: 'clamp(40px, 8vw, 120px)', // Couvre massivement l'espace sur TV
               fontWeight: '900', 
               color: '#fff', 
               marginBottom: '30px', 
-              letterSpacing: '-2px',
-              lineHeight: '1'
+              letterSpacing: '-4px',
+              lineHeight: '0.9'
             }}>
               CAPELLA<span style={{ color: '#2563eb' }}>.</span>
             </h3>
-            <p style={{ color: '#71717a', fontSize: '18px', lineHeight: '1.8', maxWidth: '600px' }}>
-              The gold standard in media optimization. High-performance streaming powered by private protocols for the elite.
+            <p style={{ color: '#71717a', fontSize: '20px', lineHeight: '1.8', maxWidth: '700px' }}>
+              The gold standard in media optimization. Empowering elite users with **15,000+ premium channels** and a 99.9% uptime guarantee.
             </p>
           </div>
 
-          <div style={{ display: 'flex', gap: '100px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '100px', flexWrap: 'wrap', alignItems: 'flex-end' }}>
             <div>
-              <h4 style={{ color: '#fff', fontSize: '18px', fontWeight: 'bold', marginBottom: '25px' }}>Infrastructure</h4>
+              <h4 style={{ color: '#fff', fontSize: '18px', fontWeight: 'bold', marginBottom: '25px' }}>Legal & Trust</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#52525b', fontSize: '16px', lineHeight: '2.5' }}>
-                <li className="hover-blue" style={{ cursor: 'pointer' }}>Edge Network Status</li>
-                <li className="hover-blue" style={{ cursor: 'pointer' }}>4K Optimization Lab</li>
-                <li className="hover-blue" style={{ cursor: 'pointer' }}>Technical Specs</li>
+                <li className="hover-blue">Privacy Policy</li>
+                <li className="hover-blue">Terms of Service</li>
+                <li className="hover-blue">Security Protocol</li>
               </ul>
             </div>
             <div>
               <h4 style={{ color: '#fff', fontSize: '18px', fontWeight: 'bold', marginBottom: '25px' }}>Support</h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#52525b', fontSize: '16px', lineHeight: '2.5' }}>
-                <li className="hover-blue" style={{ cursor: 'pointer' }}>24/7 Priority Help</li>
-                <li className="hover-blue" style={{ cursor: 'pointer' }}>Reddit Community</li>
-                <li className="hover-blue" style={{ cursor: 'pointer' }}>Documentation</li>
+                <li className="hover-blue">24/7 Priority Desk</li>
+                <li className="hover-blue">System Status</li>
+                <li className="hover-blue">Contact Engineering</li>
               </ul>
             </div>
           </div>
         </div>
 
-        {/* COPYRIGHT FINAL */}
+        {/* COPYRIGHT DISCRET */}
         <div style={{ 
           marginTop: '120px', 
           textAlign: 'center',
           color: '#27272a',
-          fontSize: '12px',
-          letterSpacing: '3px'
+          fontSize: '11px',
+          letterSpacing: '4px',
+          textTransform: 'uppercase'
         }}>
-          © 2026 CAPELLA HOME MEDIA OPTIMIZER. BUILT FOR THE ELITE | POWERED BY STRIPE
+          © 2026 CAPELLA HOME MEDIA OPTIMIZER | POWERED BY STRIPE SECURE
         </div>
       </div>
     </footer>
