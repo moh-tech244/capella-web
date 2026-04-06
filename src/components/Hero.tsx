@@ -12,143 +12,107 @@ export default function Hero() {
 
   return (
     <section id="features" style={{ 
-      padding: isMobile ? '80px 15px' : '120px 20px', 
+      padding: isMobile ? '60px 15px' : '100px 20px', 
       textAlign: 'center', 
       backgroundColor: '#000', 
       color: '#fff',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      fontFamily: '"Inter", sans-serif',
-      position: 'relative',
+      fontFamily: 'Inter, sans-serif',
       backgroundImage: `
-        radial-gradient(circle at 50% -20%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
-        linear-gradient(rgba(26, 32, 44, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(26, 32, 44, 0.1) 1px, transparent 1px)
+        radial-gradient(circle at center, rgba(16, 24, 40, 0.8) 0%, rgba(0, 0, 0, 1) 70%),
+        linear-gradient(rgba(26, 32, 44, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 32, 44, 0.15) 1px, transparent 1px)
       `,
-      backgroundSize: '100% 100%, 50px 50px, 50px 50px',
-      minHeight: isMobile ? '70vh' : '85vh',
+      backgroundSize: '100% 100%, 40px 40px, 40px 40px',
+      minHeight: isMobile ? '50vh' : '65vh',
       overflow: 'hidden'
     }}>
       
-      {/* ANIMATIONS CSS */}
-      <style>{`
-        @keyframes scan {
-          0% { transform: translateY(-100px); opacity: 0; }
-          50% { opacity: 0.5; }
-          100% { transform: translateY(300px); opacity: 0; }
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-        .scanner-line {
-          position: absolute;
-          top: 0; left: 0; width: 100%; height: 2px;
-          background: linear-gradient(90deg, transparent, #2563eb, transparent);
-          animation: scan 4s linear infinite;
-          z-index: 1;
-        }
-        .btn-premium:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
-          background-color: #3b82f6 !important;
-        }
-        .badge-float { animation: float 3s ease-in-out infinite; }
-      `}</style>
-
-      <div className="scanner-line"></div>
-
-      {/* BADGE ÉLÉGANT */}
-      <div className="badge-float" style={{
-        display: 'flex', alignItems: 'center', gap: '8px',
-        backgroundColor: 'rgba(37, 99, 235, 0.1)', border: '1px solid rgba(37, 99, 235, 0.3)',
-        color: '#3b82f6', padding: '6px 16px', borderRadius: '99px', 
-        fontSize: '11px', fontWeight: '800', marginBottom: '25px', 
-        textTransform: 'uppercase', letterSpacing: '1px', backdropFilter: 'blur(10px)'
+      {/* Nouvelle phrase ajoutée au-dessus */}
+      <p style={{
+        fontSize: isMobile ? '13px' : '16px',
+        color: '#71717a',
+        marginBottom: '10px',
+        fontWeight: '500'
       }}>
-        <span style={{ width: '6px', height: '6px', backgroundColor: '#3b82f6', borderRadius: '50%', display: 'inline-block' }}></span>
+        Capella offers three premium access tiers tailored for your needs.
+      </p>
+
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: '6px',
+        backgroundColor: 'rgba(37, 99, 235, 0.08)', border: '1px solid rgba(37, 99, 235, 0.2)',
+        color: '#2563eb', padding: '5px 14px', borderRadius: '99px', 
+        fontSize: isMobile ? '10px' : '11px', fontWeight: '700', marginBottom: '20px', textTransform: 'uppercase'
+      }}>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#2563eb"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg>
         Enterprise-Grade Performance
       </div>
 
-      {/* TITRE MASSIF */}
       <h1 style={{ 
-        fontSize: isMobile ? '42px' : '82px', 
+        fontSize: isMobile ? '36px' : '62px', 
         fontWeight: '900', 
-        marginBottom: '20px', 
-        letterSpacing: '-3px',
-        lineHeight: '1',
-        maxWidth: '1000px',
-        padding: '0 10px',
-        background: 'linear-gradient(to bottom, #fff 60%, #71717a)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
+        marginBottom: '15px', 
+        letterSpacing: isMobile ? '-1px' : '-2px',
+        lineHeight: '1.1',
+        maxWidth: '900px',
+        padding: '0 10px'
       }}>
         Next-Gen Media <br/>
-        <span style={{ color: '#2563eb', WebkitTextFillColor: '#2563eb' }}>Optimization Protocol</span>
+        <span style={{ color: '#2563eb' }}>Optimization Protocol</span>
       </h1>
 
       <p style={{ 
-        fontSize: isMobile ? '16px' : '20px', 
+        fontSize: isMobile ? '15px' : '18px', 
         color: '#a1a1aa', 
-        maxWidth: '700px', 
-        lineHeight: '1.6',
-        marginBottom: '45px',
-        padding: '0 20px'
+        maxWidth: '650px', 
+        lineHeight: '1.5',
+        marginBottom: '35px',
+        padding: '0 15px'
       }}>
-        Experience Ultra-HD stability and 4K performance tailored for global networks. 
-        Engineered for the elite.
+        Experience Ultra-HD stability and 4K performance. Optimized for global networks.
       </p>
 
-      {/* BOUTONS D'ACTION STYLÉS */}
       <div style={{ 
         display: 'flex', 
-        gap: '20px', 
+        gap: '12px', 
+        marginBottom: '40px', 
         flexDirection: isMobile ? 'column' : 'row',
-        alignItems: 'center',
-        zIndex: 2
+        width: isMobile ? '100%' : 'auto',
+        alignItems: 'center'
       }}>
-        <button 
-          className="btn-premium"
-          onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-          style={{ 
-            backgroundColor: '#2563eb', color: 'white', 
-            padding: '18px 45px', borderRadius: '14px', border: 'none', 
-            fontSize: '16px', fontWeight: '800', cursor: 'pointer',
-            transition: 'all 0.3s ease', display: 'flex', alignItems: 'center', gap: '10px'
-          }}
-        >
-          View Protocols
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </button>
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: '8px',
+          backgroundColor: '#0a0a0a', border: '1px solid #1a1a1a',
+          padding: '10px 22px', borderRadius: '10px', color: '#fff', fontSize: '13px',
+          width: isMobile ? '80%' : 'auto', justifyContent: 'center'
+        }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#facc15"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
+          Ultra-HD Stability
+        </div>
 
-        <button 
-          onClick={() => document.getElementById('features-details')?.scrollIntoView({ behavior: 'smooth' })}
-          style={{ 
-            backgroundColor: 'transparent', color: '#fff', 
-            padding: '18px 45px', borderRadius: '14px', 
-            border: '1px solid #27272a', fontSize: '16px', fontWeight: '700', 
-            cursor: 'pointer', transition: 'all 0.3s ease'
-          }}
-          onMouseEnter={(e) => e.currentTarget.style.borderColor = '#52525b'}
-          onMouseLeave={(e) => e.currentTarget.style.borderColor = '#27272a'}
-        >
-          Explore Specs
-        </button>
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: '8px',
+          backgroundColor: '#0a0a0a', border: '1px solid #1a1a1a',
+          padding: '10px 22px', borderRadius: '10px', color: '#fff', fontSize: '13px',
+          width: isMobile ? '80%' : 'auto', justifyContent: 'center'
+        }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#22c55e"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          Global Network
+        </div>
       </div>
 
-      {/* DÉCORATION BASSE ÉLÉGANTE */}
-      <div style={{
-        marginTop: '60px',
-        display: 'flex',
-        gap: '40px',
-        opacity: 0.5,
-        filter: 'grayscale(1)'
-      }}>
-        {['4K READY', 'ULTRA STABLE', 'SECURE'].map((tag) => (
-          <span key={tag} style={{ fontSize: '12px', fontWeight: '900', letterSpacing: '2px' }}>{tag}</span>
-        ))}
-      </div>
+      <button 
+        onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+        style={{ 
+          backgroundColor: '#2563eb', color: 'white', padding: isMobile ? '14px 28px' : '16px 40px', 
+          borderRadius: '12px', border: 'none', fontSize: isMobile ? '14px' : '16px', fontWeight: '800', 
+          cursor: 'pointer', boxShadow: '0 8px 20px rgba(37, 99, 235, 0.3)'
+        }}
+      >
+        View Pricing Plans
+      </button>
     </section>
   );
 }
