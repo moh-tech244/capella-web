@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -17,14 +16,6 @@ export default function Header() {
     };
   }, []);
 
-  const scrollTo = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setMenuOpen(false);
-    }
-  };
-
   return (
     <nav style={{ 
       display: 'flex', justifyContent: 'space-between', alignItems: 'center', 
@@ -35,6 +26,36 @@ export default function Header() {
       borderBottom: scrolled ? '1px solid #111' : '1px solid transparent',
       transition: 'all 0.4s ease'
     }}>
+      <style>{`
+        @keyframes borderGlow {
+          0% { box-shadow: 0 0 5px rgba(37, 99, 235, 0.2); }
+          50% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.6); }
+          100% { box-shadow: 0 0 5px rgba(37, 99, 235, 0.2); }
+        }
+        .btn-support {
+          background: #000;
+          color: #fff;
+          border: 1px solid #2563eb;
+          padding: 10px 25px;
+          border-radius: 12px;
+          font-weight: 800;
+          font-size: 13px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          animation: borderGlow 3s infinite;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+        .btn-support:hover {
+          background: #2563eb;
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
+        }
+      `}</style>
+
       <div onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}>
         <div style={{ backgroundColor: '#2563eb', padding: '10px', borderRadius: '12px' }}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2L2 22h20L12 2z"/></svg>
@@ -42,28 +63,22 @@ export default function Header() {
         <span style={{ fontWeight: '900', fontSize: '19px', color: 'white', letterSpacing: '-0.5px' }}>CAPELLA <span style={{ color: '#2563eb' }}>R&D</span></span>
       </div>
 
-      {!isMobile ? (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
-          {['Features', 'Pricing'].map(item => (
-            <span key={item} onClick={() => scrollTo(item.toLowerCase())} style={{ color: '#a1a1aa', fontSize: '14px', fontWeight: '600', cursor: 'pointer', transition: '0.3s' }}>{item}</span>
-          ))}
-          <button 
-            onClick={() => window.open('https://wa.me/14389693772?text=Bonjour,%20je%20souhaite%20commander%20un%20protocole.', '_blank')}
-            style={{ backgroundColor: '#25D366', color: 'white', padding: '10px 22px', borderRadius: '99px', border: 'none', fontWeight: '800', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            WhatsApp Support
-          </button>
-        </div>
-      ) : (
-        <button onClick={() => setMenuOpen(!menuOpen)} style={{ background: 'none', border: 'none', color: 'white', fontSize: '24px' }}>{menuOpen ? '✕' : '☰'}</button>
-      )}
-
-      {menuOpen && isMobile && (
-        <div style={{ position: 'absolute', top: '100%', left: 0, width: '100%', backgroundColor: '#050505', padding: '40px', display: 'flex', flexDirection: 'column', gap: '25px', textAlign: 'center', borderBottom: '1px solid #111' }}>
-          <span onClick={() => scrollTo('features')} style={{ color: 'white', fontSize: '18px' }}>Features</span>
-          <span onClick={() => scrollTo('pricing')} style={{ color: 'white', fontSize: '18px' }}>Pricing</span>
-          <button onClick={() => window.open('https://wa.me/14389693772', '_blank')} style={{ backgroundColor: '#25D366', color: 'white', padding: '15px', borderRadius: '12px', border: 'none', fontWeight: '800' }}>Contact WhatsApp</button>
-        </div>
-      )}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
+        {!isMobile && (
+          <>
+            <span onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })} style={{ color: '#a1a1aa', fontSize: '14px', fontWeight: '600', cursor: 'pointer' }}>Features</span>
+            <span onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} style={{ color: '#a1a1aa', fontSize: '14px', fontWeight: '600', cursor: 'pointer' }}>Pricing</span>
+          </>
+        )}
+        
+        <button 
+          className="btn-support"
+          onClick={() => window.open('https://wa.me/14389693772', '_blank')}
+        >
+          <div style={{ width: '8px', height: '8px', backgroundColor: '#22c55e', borderRadius: '50%' }}></div>
+          Support Protocol
+        </button>
+      </div>
     </nav>
   );
 }
