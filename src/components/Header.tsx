@@ -32,7 +32,7 @@ export default function Header() {
           50% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.6); }
           100% { box-shadow: 0 0 5px rgba(37, 99, 235, 0.2); }
         }
-        .btn-support {
+        .btn-status {
           background: #000;
           color: #fff;
           border: 1px solid #2563eb;
@@ -49,7 +49,7 @@ export default function Header() {
           text-transform: uppercase;
           letter-spacing: 1px;
         }
-        .btn-support:hover {
+        .btn-status:hover {
           background: #2563eb;
           transform: translateY(-2px);
           box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
@@ -72,11 +72,11 @@ export default function Header() {
         )}
         
         <button 
-          className="btn-support"
+          className="btn-status"
           onClick={() => window.open('https://wa.me/14389693772', '_blank')}
         >
           <div style={{ width: '8px', height: '8px', backgroundColor: '#22c55e', borderRadius: '50%' }}></div>
-          Support Protocol
+          System Status
         </button>
       </div>
     </nav>
