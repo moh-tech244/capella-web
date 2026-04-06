@@ -1,45 +1,29 @@
 import React from 'react';
-// On s'assure que la casse correspond exactement aux fichiers dans /components
-import Pricing from './components/Pricing';
-import Footer from './components/Footer';
-
-// On garde un Header simple ici pour éviter les erreurs de build sur les autres fichiers
-const Header = () => (
-  <header style={{ padding: '20px', textAlign: 'center', borderBottom: '1px solid #111', backgroundColor: '#000' }}>
-    <h1 style={{ fontSize: '18px', fontWeight: 'bold', letterSpacing: '2px', color: '#fff' }}>CAPELLA</h1>
-  </header>
-);
+import Header from '../components/Header';
+import Hero from '../components/Hero';
+import Pricing from '../components/Pricing';
+import '../styles/index.css'; 
 
 export default function App() {
   return (
-    <div style={{ 
-      backgroundColor: '#000', 
-      minHeight: '100vh', 
-      color: '#fff', 
-      margin: 0, 
-      padding: 0, 
-      overflowX: 'hidden', 
-      fontFamily: 'sans-serif' 
-    }}>
+    <div className="app-container" style={{ backgroundColor: '#000', minHeight: '100vh', color: 'white' }}>
+      {/* Barre de navigation */}
       <Header />
-      
-      <main>
-        {/* On appelle Pricing.tsx (Assure-toi que le fichier s'appelle Pricing.tsx avec un P majuscule) */}
-        <Pricing />
 
-        {/* Section FAQ pour rassurer tes clients Reddit avant le Footer */}
-        <section style={{ padding: '80px 20px', maxWidth: '800px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '28px', textAlign: 'center', marginBottom: '40px' }}>Technical FAQ</h2>
-          <div style={{ display: 'grid', gap: '15px' }}>
-            <div style={{ padding: '20px', backgroundColor: '#09090b', borderRadius: '12px', border: '1px solid #18181b' }}>
-              <h3 style={{ fontSize: '16px', color: '#3b82f6', marginBottom: '8px' }}>Zero buffering on 4K?</h3>
-              <p style={{ color: '#71717a', fontSize: '14px', margin: 0 }}>Yes. Our Elite Protocol ensures smooth playback for all live sports events.</p>
-            </div>
-          </div>
-        </section>
+      <main>
+        {/* Titre et Badge */}
+        <Hero />
+
+        {/* Grille de prix */}
+        <Pricing />
       </main>
 
-      <Footer />
+      {/* Icône de support flottante */}
+      <div style={{ position: 'fixed', bottom: '30px', right: '30px', backgroundColor: '#2563eb', padding: '15px', borderRadius: '50%', display: 'flex', boxShadow: '0 10px 25px rgba(37, 99, 235, 0.4)' }}>
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+          <path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7c0-4.97-4.03-9-9-9z"/>
+        </svg>
+      </div>
     </div>
   );
 }
